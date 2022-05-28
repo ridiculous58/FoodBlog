@@ -7,7 +7,7 @@ using YemekTarifi.Domain;
 
 namespace YemekTarifi.Application.Dtos
 {
-    public class FoodDto : BaseDto
+    public class RecipeDto : BaseDto
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -15,7 +15,7 @@ namespace YemekTarifi.Application.Dtos
         public int Star { get; set; }
         public string ImageUrl { get; set; }
 
-        public string FoodCategoryId { get; set; }
+        public string RecipeCategoryId { get; set; }
     }
 
 

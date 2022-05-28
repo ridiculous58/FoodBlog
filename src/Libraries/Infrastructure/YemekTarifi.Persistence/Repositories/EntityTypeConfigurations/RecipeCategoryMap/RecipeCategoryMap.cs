@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using YemekTarifi.Domain.Entities;
 
-namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.FoodCategoryMap
+namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.RecipeCategoryMap
 {
-        public class FoodCategoryMap : BaseEntityMap<FoodCategory>
+        public class RecipeCategoryMap : BaseEntityMap<RecipeCategory>
         {
-            public override void Configure(EntityTypeBuilder<FoodCategory> builder)
+            public override void Configure(EntityTypeBuilder<RecipeCategory> builder)
             {
 
                 builder.HasIndex(f => f.Name).IncludeProperties(x => x.Description).HasFillFactor(70).HasDatabaseName("IX1_NAME");

@@ -28,6 +28,8 @@ namespace YemekTarifi.Application.Interfaces
         Task<T> DeleteAsync(T entity);
         void Delete(IEnumerable<T> entities);
         Task<IEnumerable<T>> DeleteAsync(IEnumerable<T> entities);
+
+        public IUnitOfWork UnitOfWork { get;}
     }
 
 }

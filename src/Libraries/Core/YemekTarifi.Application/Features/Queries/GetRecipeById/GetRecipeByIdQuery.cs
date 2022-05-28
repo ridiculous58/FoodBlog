@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 using MediatR;
 using YemekTarifi.Application.Features.Queries.ViewModels;
 
-namespace YemekTarifi.Application.Features.Queries.GetFoodById
+namespace YemekTarifi.Application.Features.Queries.GetRecipeById
 {
-    public class GetFoodByIdQuery : IRequest<FoodCategoryViewModel>
+    public class GetRecipeByIdQuery : IRequest<RecipeViewModel>
     {
         public Guid Id { get; set; }
+
+        public GetRecipeByIdQuery(Guid id)
+        {
+            Id = id;
+        }
     }
 }

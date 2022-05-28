@@ -6,20 +6,19 @@ using System.Threading.Tasks;
 
 namespace YemekTarifi.Domain.Entities
 {
-    public class Food : BaseEntity
+    public class Recipe : BaseEntity
     {
-        public Food()
+        public Recipe()
         {
-            FoodComments = new List<FoodComment>();
+            RecipeComments = new List<RecipeComment>();
         }
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Recipe { get; set; }
         public int Star { get; set; }
         public string ImageUrl { get; set; }
-        public Guid FoodCategoryId { get; set; }
-        public FoodCategory FoodCategory { get; set; }
-        public IList<FoodComment> FoodComments { get; set; }
+        public Guid RecipeCategoryId { get; set; }
+        public RecipeCategory RecipeCategory { get; set; }
+        public IList<RecipeComment> RecipeComments { get; set; }
     }
 }

@@ -50,6 +50,8 @@ namespace YemekTarifi.Persistence.Repositories
             return entities;
         }
 
+        public IUnitOfWork UnitOfWork => _context;
+
         public virtual IEnumerable<T> GetAll()
         {
             return _dbSet.ToList();

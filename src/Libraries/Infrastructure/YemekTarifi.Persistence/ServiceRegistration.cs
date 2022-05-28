@@ -17,7 +17,8 @@ namespace YemekTarifi.Persistence
             });
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IIdentityService, IdentityService>();
-            services.AddScoped<IFoodService, FoodService>();
+            services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<IRecipeCategoryService, RecipeCategoryService>();
         }
 
     }

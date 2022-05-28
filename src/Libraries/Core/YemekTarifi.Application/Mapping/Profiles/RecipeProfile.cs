@@ -9,11 +9,11 @@ using YemekTarifi.Domain.Entities;
 
 namespace YemekTarifi.Application.Mapping.Profiles
 {
-    public class FoodProfile : Profile
+    public class RecipeProfile : Profile
     {
-        public FoodProfile()
+        public RecipeProfile()
         {
-            CreateMap<Food, FoodCategoryViewModel>()
+            CreateMap<Recipe, RecipeViewModel>()
                 .ReverseMap();
         }
     }

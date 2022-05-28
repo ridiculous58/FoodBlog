@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace YemekTarifi.Application.Features.Queries.ViewModels
 {
-    public class FoodCategoryViewModel
+    public class RecipeCategoryViewModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

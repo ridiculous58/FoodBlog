@@ -7,15 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using YemekTarifi.Domain.Entities;
 
-namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.FoodCommentMap
+namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.RecipeCommentMap
 {
-    public class FoodCommentMap : BaseEntityMap<FoodComment>
+    public class RecipeCommentMap : BaseEntityMap<RecipeComment>
     {
-        public override void Configure(EntityTypeBuilder<FoodComment> builder)
+        public override void Configure(EntityTypeBuilder<RecipeComment> builder)
         {
 
             builder.HasIndex(f => f.Name)
-                .IncludeProperties(nameof(FoodComment.Star), nameof(FoodComment.Comment))
+                .IncludeProperties(nameof(RecipeComment.Star), nameof(RecipeComment.Comment))
                 .HasFillFactor(70)
                 .HasDatabaseName("IX1_NAME");
 

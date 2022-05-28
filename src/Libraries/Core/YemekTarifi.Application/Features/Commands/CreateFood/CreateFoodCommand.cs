@@ -9,28 +9,34 @@ using YemekTarifi.Application.Dtos;
 using YemekTarifi.Application.Interfaces;
 using YemekTarifi.Domain.Entities;
 
-namespace YemekTarifi.Application.Features.Commands.CreateFood
+namespace YemekTarifi.Application.Features.Commands.CreateRecipe
 {
-    public class CreateFoodCommand : IRequest<bool>
+    public class CreateRecipeCommand : IRequest<bool>
     {
-        public FoodDto FoodDto { get; set; }
+        public RecipeDto RecipeDto { get; set; }
+
+        public CreateRecipeCommand(RecipeDto RecipeDto)
+        {
+            RecipeDto = RecipeDto;
+        }
     }
 
-    public class CreateFoodCommandHandler : IRequestHandler<CreateFoodCommand, bool>
+    public class CreateRecipeCommandHandler : IRequestHandler<CreateRecipeCommand, bool>
     {
-        private readonly IFoodService _foodService;
+        private readonly IRecipeService _recipeService;
         private readonly IMapper _mapper;
 
-        public CreateFoodCommandHandler(IFoodService foodService, IMapper mapper)
+        public CreateRecipeCommandHandler(IRecipeService RecipeService, IMapper mapper)
         {
-            _foodService = foodService;
+            _recipeService = RecipeService;
             _mapper = mapper;
         }
 
-        public async Task<bool> Handle(CreateFoodCommand request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(CreateRecipeCommand request, CancellationToken cancellationToken)
         {
-            var food = _mapper.Map<Food>(request.FoodDto);
-            return await _foodService.InsertAsync(food);
+            var recipe = _mapper.Map<Recipe>(request.RecipeDto);
+            await _recipeService.InsertAsync(recipe);
+            return true;
         }
     }
 

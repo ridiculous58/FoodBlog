@@ -18,11 +18,13 @@ namespace YemekTarifi.Persistence.Repositories
 
         public async Task<bool> SaveChangesAsync()
         {
-            return await SaveChangesAsync();
+            await base.SaveChangesAsync();
+            return true;
         }
         bool IUnitOfWork.SaveChanges()
         {
-            return SaveChanges() > 0;
+            SaveChanges();
+            return true;
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using YemekTarifi.Domain.Entities;
 
-namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.FoodMap
+namespace YemekTarifi.Persistence.Repositories.EntityTypeConfigurations.RecipeMap
 {
-    public class FoodMap : BaseEntityMap<Food>
+    public class RecipeMap : BaseEntityMap<Recipe>
     {
-        public override void Configure(EntityTypeBuilder<Food> builder)
+        public override void Configure(EntityTypeBuilder<Recipe> builder)
         {
-
+            
+            builder.Property(x => x.Description).IsRequired(false);
             builder.HasIndex(f => f.Name).IncludeProperties(x=>x.ImageUrl).HasFillFactor(70).HasDatabaseName("IX1_NAME");
             base.Configure(builder);
 

@@ -71,12 +71,7 @@
 }
 
 .recipes-list__rating i {
-    color: #fbb710;
     font-size: 10px;
-}
-
-.recipes-list__rating i:last-child {
-    color: #e0e3e4;
 }
 
 .recipes-list__pagination {

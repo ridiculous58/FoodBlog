@@ -6,14 +6,16 @@ using System.Threading.Tasks;
 
 namespace YemekTarifi.Application.Features.Queries.ViewModels
 {
-    public class FoodViewModel
+    public class RecipeViewModel
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Recipe { get; set; }
         public int Star { get; set; }
+        public DateTime CreatedDate { get; set; }
         public string ImageUrl { get; set; }
-        public FoodCategoryViewModel FoodCategory { get; set; }
-        public IList<FoodCommentsViewModel> FoodComments { get; set; }
+        public RecipeCategoryViewModel RecipeCategory { get; set; }
+        public IList<RecipeCommentsViewModel> RecipeComments { get; set; }
     }
 }
