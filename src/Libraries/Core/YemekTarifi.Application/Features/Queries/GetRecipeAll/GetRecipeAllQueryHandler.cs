@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using YemekTarifi.Application.Features.Queries.ViewModels;
 using YemekTarifi.Application.Interfaces;
 using YemekTarifi.Domain.Entities;
@@ -19,8 +20,17 @@ public class GetRecipeAllQueryHandler : IRequestHandler<GetRecipeAllQuery,IEnume
 
     public async Task<IEnumerable<RecipeViewModel>> Handle(GetRecipeAllQuery request, CancellationToken cancellationToken)
     {
-        var recipes = await _recipeService.GetRecipeAllAsync();
+        IQueryable<Recipe> table = _recipeService.Table;
+
+        table = table.Include(x => x.RecipeCategory); // eagle loading
         
+        if (request.IsOrderByDescendingForCreatedDate)
+        {
+            table = table.OrderByDescending(x => x.CreatedDate);
+        }
+
+        var recipes = await Task.Run(() => table.AsEnumerable(), cancellationToken);
+
         return _mapper.Map<IEnumerable<Recipe>, IEnumerable<RecipeViewModel>>(recipes);
     }
 }

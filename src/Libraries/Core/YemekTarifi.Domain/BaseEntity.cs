@@ -22,7 +22,7 @@ namespace YemekTarifi.Domain
 
         public DateTime CreatedDate { get; set; } = DateTime.Now;
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         protected BaseEntity()
         {
             _id = Guid.NewGuid();

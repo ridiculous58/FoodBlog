@@ -14,8 +14,8 @@ namespace YemekTarifi.Application.Dtos
         public string Recipe { get; set; }
         public int Star { get; set; }
         public string ImageUrl { get; set; }
-
         public string RecipeCategoryId { get; set; }
+        public bool IsActive { get; set; }
     }
 
 

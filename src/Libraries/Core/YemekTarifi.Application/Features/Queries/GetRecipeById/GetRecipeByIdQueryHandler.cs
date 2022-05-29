@@ -23,8 +23,11 @@ namespace YemekTarifi.Application.Features.Queries.GetRecipeById
 
         public async Task<RecipeViewModel> Handle(GetRecipeByIdQuery request, CancellationToken cancellationToken)
         {
-            var Recipe = await _RecipeService.GetRecipeByIdAsync(request.Id);
-            return _mapper.Map<RecipeViewModel>(Recipe);
+            if (!Guid.TryParse(request.Id, out var id))
+                return null;
+            
+            var recipe = await _RecipeService.GetRecipeByIdAsync(id);
+            return _mapper.Map<RecipeViewModel>(recipe);
         }
     }
 }

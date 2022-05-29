@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using YemekTarifi.Application.Interfaces;
@@ -11,6 +12,8 @@ namespace YemekTarifi.Persistence.Services
     public class RecipeService : IRecipeService
     {
         private readonly IRepository<Recipe> _repository;
+
+        public IQueryable<Recipe> Table => _repository.Table;
 
         public RecipeService(IRepository<Recipe> repository)
         {
@@ -26,7 +29,6 @@ namespace YemekTarifi.Persistence.Services
         {
             return await _repository.GetAllAsync();
         }
-
         public async Task<Recipe> InsertAsync(Recipe recipe)
         {
             var addedRecipe = await _repository.InsertAsync(recipe);
@@ -38,6 +40,28 @@ namespace YemekTarifi.Persistence.Services
         {
             await _repository.InsertManyAsync(recipes);
             await _repository.UnitOfWork.SaveChangesAsync();
+        }
+
+        public async Task<bool> DeleteById(string id)
+        {
+            if (!Guid.TryParse(id, out var idGuid))
+                return false;
+            
+            var recipe = await _repository.GetByIdAsync(idGuid);
+           
+            if (recipe == null)
+                return false;
+            
+            await _repository.DeleteAsync(recipe);
+            await _repository.UnitOfWork.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<Recipe> UpdateAsync(Recipe recipe)
+        {
+            var updatedRecipe = await _repository.UpdateAsync(recipe); 
+            await _repository.UnitOfWork.SaveChangesAsync();
+            return updatedRecipe;
         }
     }
 }

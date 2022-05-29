@@ -23,123 +23,39 @@
 <section class="recipes-list">
     <div class="container">
         <div class="recipes-list__heading">
-            <h2 class="recipes-list__title">Latest recipes</h2>
+            <h2 class="recipes-list__title">Son Tarifler</h2>
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="100">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/1.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Traditional Pizza</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+            @foreach (var recipe in Model)
+                        {
+                            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
+                                 data-aos-delay="100">
+                                <a href="/Recipe/RecipeDetail/@recipe.Id">
+                                <div class="recipes-list__item">
+                                    <img src="@recipe.ImageUrl" alt="">
+                                    <div class="recipes-list__info-background">
+                                        <div class="recipes-list__info">
+                                            <h3>@recipe.Name</h3>
+                                            <div class="recipes-list__rating">
+                                                @for (int i = 0; i < 5; i++)
+                                                {
+                                                    if (i < @recipe.Star)
+                                                    {
+                                                        <i style="color: #fbb710" class="fas fa-star"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <i style="color: #e0e3e4" class="fas fa-star"></i>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="200">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/2.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Italian home-made pasta</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="300">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/3.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Chesse Cake Tart</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="100">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/4.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Traditional Pizza</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="200">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/5.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Italian home-made pasta</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
-                 data-aos-delay="300">
-                <div class="recipes-list__item">
-                    <img src="~/images/recipes/6.jpg" alt="">
-                    <div class="recipes-list__info-background">
-                        <div class="recipes-list__info">
-                            <h3>Chesse Cake Tart</h3>
-                            <div class="recipes-list__rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                        }
         </div>
     </div>
 </section>
@@ -151,7 +67,7 @@
 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
      data-aos-delay="0">
     <div class="recipes-rating__col">
-        <h2 class="recipes-rating__title">Top rated recipes</h2>
+        <h2 class="recipes-rating__title">En Çok Bakılan tarifler</h2>
         <ul class="recipes-rating__top">
             <li>
                 <div class="recipes-rating__list-items">
@@ -304,7 +220,7 @@
 <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-easing="ease-in-out"
      data-aos-delay="150">
     <div class="recipes-rating__col">
-        <h2 class="recipes-rating__title">Most liked recipes</h2>
+        <h2 class="recipes-rating__title">En beğenilen tarifler</h2>
         <ul class="recipes-rating__liked">
             <li>
                 <div class="recipes-rating__list-items">

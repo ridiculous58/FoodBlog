@@ -30,7 +30,7 @@ namespace YemekTarifi.MVC.Controllers
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterDto registerDto)
+        public async Task<IActionResult> Register(RegisterDto? registerDto)
         {
             if (registerDto == null)
                 return BadRequest();
@@ -44,13 +44,13 @@ namespace YemekTarifi.MVC.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login()
         {
-            var loginDto = new LoginDto();
+            var loginDto = new LoginDto("zeynep@zec.com","Zeynep@1234",true);
             return View(loginDto);
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Login(LoginDto loginDto)
+        public async Task<IActionResult> Login(LoginDto? loginDto)
         {
             if (loginDto == null)
                 return BadRequest();

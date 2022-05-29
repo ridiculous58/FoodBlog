@@ -10,9 +10,9 @@ namespace YemekTarifi.Application.Features.Queries.GetRecipeById
 {
     public class GetRecipeByIdQuery : IRequest<RecipeViewModel>
     {
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
-        public GetRecipeByIdQuery(Guid id)
+        public GetRecipeByIdQuery(string id)
         {
             Id = id;
         }

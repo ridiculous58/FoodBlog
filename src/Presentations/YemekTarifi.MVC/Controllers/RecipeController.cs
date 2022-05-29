@@ -22,7 +22,7 @@ public class RecipeController : Controller
     
     public async Task<IActionResult> RecipeDetail(string id)
     {
-        var recipe = await  _mediator.Send(new GetRecipeByIdQuery(Guid.Parse(id)));
+        var recipe = await  _mediator.Send(new GetRecipeByIdQuery(id));
         return View(recipe);
     }
     

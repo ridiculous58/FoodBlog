@@ -1,19 +1,26 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Text;
+using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using YemekTarifi.Application.Features.Queries.GetRecipeAll;
 
 namespace YemekTarifi.MVC.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly IMediator _mediator;
+        public HomeController(IMediator mediator)
         {
-            return View();
+            _mediator = mediator;
         }
 
-        public IActionResult Recipes()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var recipes = await _mediator.Send(new GetRecipeAllQuery(true));
+            return View(recipes);
         }
+        
 
         public IActionResult RecipeDetail()
         {
@@ -26,6 +33,10 @@ namespace YemekTarifi.MVC.Controllers
         }
 
         public IActionResult Contact()
+        {
+            return View();
+        }
+        public IActionResult Error()
         {
             return View();
         }

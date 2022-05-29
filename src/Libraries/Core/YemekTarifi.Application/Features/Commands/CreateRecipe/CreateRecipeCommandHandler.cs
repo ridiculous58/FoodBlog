@@ -5,30 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YemekTarifi.Application.Dtos;
 using YemekTarifi.Application.Interfaces;
 using YemekTarifi.Domain.Entities;
 
 namespace YemekTarifi.Application.Features.Commands.CreateRecipe
 {
-    public class CreateRecipeCommand : IRequest<bool>
-    {
-        public RecipeDto RecipeDto { get; set; }
-
-        public CreateRecipeCommand(RecipeDto RecipeDto)
-        {
-            RecipeDto = RecipeDto;
-        }
-    }
-
     public class CreateRecipeCommandHandler : IRequestHandler<CreateRecipeCommand, bool>
     {
         private readonly IRecipeService _recipeService;
         private readonly IMapper _mapper;
 
-        public CreateRecipeCommandHandler(IRecipeService RecipeService, IMapper mapper)
+        public CreateRecipeCommandHandler(IRecipeService recipeService, IMapper mapper)
         {
-            _recipeService = RecipeService;
+            _recipeService = recipeService;
             _mapper = mapper;
         }
 

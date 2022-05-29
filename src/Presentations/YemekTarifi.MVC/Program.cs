@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 using System.Reflection;
+using System.Text;
+using Microsoft.AspNetCore.Builder;
 using YemekTarifi.Application;
 using YemekTarifi.Application.Dtos;
 using YemekTarifi.Application.Interfaces;
@@ -45,6 +47,18 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+// app.Use(async (context, next) =>
+// {
+//     try
+//     {
+//         await next(context);
+//     }
+//     catch (Exception e)
+//     {
+//         context.Response.Redirect($"/Home/Error");
+//     }
+// });
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -107,8 +121,8 @@ void ConfigureServices(IServiceCollection services,IConfiguration configuration)
     urlViewModel.UrlViewModels.Add(new UrlViewModel
     {
         IconName = "table_view",
-        Text = "Eat",
-        Url = "/admin/home/eat"
+        Text = "Recipe",
+        Url = "/admin/home/recipe"
     });
 
     services.AddSingleton(urlViewModel);
@@ -186,7 +200,8 @@ async Task AddSeedData(IServiceScope scope, ApplicationDbContext context)
             ImageUrl = "/images/recipes/1.jpg",
             Name = "Traditional Pizza",
             RecipeCategoryId = pizzaCategory.Id,
-            Star = 1
+            Star = 1,
+            IsActive = false
         },
         new Recipe()
         {
@@ -200,7 +215,8 @@ async Task AddSeedData(IServiceScope scope, ApplicationDbContext context)
             ImageUrl = "/images/recipes/3.jpg",
             Name = "Chesse Cake Tart",
             RecipeCategoryId = cakeCategory.Id,
-            Star = 4
+            Star = 4,
+            IsActive = false
         },
         new Recipe()
         {
@@ -214,7 +230,8 @@ async Task AddSeedData(IServiceScope scope, ApplicationDbContext context)
             ImageUrl = "/images/recipes/5.jpg",
             Name = "Italian home-made pasta",
             RecipeCategoryId = pastaCategory.Id,
-            Star = 2
+            Star = 2,
+            IsActive = false
         },
         new Recipe()
         {

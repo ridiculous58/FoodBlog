@@ -13,8 +13,10 @@ namespace YemekTarifi.Application.Features.Queries.ViewModels
         public string Description { get; set; }
         public string Recipe { get; set; }
         public int Star { get; set; }
+        public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public string ImageUrl { get; set; }
+        public string RecipeCategoryId { get; set; }
         public RecipeCategoryViewModel RecipeCategory { get; set; }
         public IList<RecipeCommentsViewModel> RecipeComments { get; set; }
     }
